@@ -1,0 +1,10 @@
+<mat-list>
+  <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+    <fa-icon [icon]="home" size="lg" class="font-awesome"></fa-icon>
+    Dashboard
+  </mat-list-item>
+  <mat-list-item *ngFor="let module of modules" [routerLink]="'/'+module.path" routerLinkActive="active">
+    <fa-icon [icon]="getIcon(module.icon)" size="lg" class="font-awesome"></fa-icon>
+    {{module.name}}
+  </mat-list-item>
+</mat-list>

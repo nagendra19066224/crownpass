@@ -1,0 +1,55 @@
+<app-layout [spinner]=loader>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>New User</h1>
+  </mat-toolbar>
+  <mat-card>
+    <mat-card-content>
+      <form class="form" [formGroup]="form" (ngSubmit)="addUser()">
+        <div fxLayout="row">
+          <div fxLayout="column" fxFlex="70">
+            <div fxLayout="row">
+              <div fxFlexOffset="8" fxFlex="85">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" placeholder="Email" formControlName="email">
+                  <mat-error *ngIf="f.email.errors && f.email.errors.required">
+                    This field is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxFlexOffset="8" fxFlex="85">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" placeholder="Password" formControlName="password">
+                  <mat-error *ngIf="f.password.errors && f.password.errors.required">
+                    This field is required</mat-error>
+                  <mat-error *ngIf="f.password.errors && f.password.errors.email">
+                    Email address is badly formatted</mat-error>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row">
+                <mat-form-field appearance="outline" class="c46-width">
+                  <mat-label>Select Region</mat-label>
+                  <mat-select formControlName="region">
+                    <mat-option *ngFor="let each of regionList" [value]="each">{{each.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="f.region.errors?.required">
+                    Region is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div class="c45-width">
+                <button class="c20-width-submit-button" mat-raised-button color="primary" type="submit">Add
+                  User</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</app-layout>

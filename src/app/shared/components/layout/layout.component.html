@@ -1,0 +1,47 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
+      <img class="brand-logo" src="./../../../assets/crownPass.png" alt="CrownPass Logo">
+    </a>
+  </nav>
+  
+  <!-- Sidebar navigation -->
+  <div class="container-fluid">
+    <div class="row">
+  
+      <nav class="col-md-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <!-- <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" (click)="navActive('dashboard')" routerLink="/dashboard">
+                <i class="fas fa-user"></i>Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="navActive('dashboard')" routerLink="/account-settings">
+                <i class="fas fa-user"></i>Account Settings
+              </a>
+            </li> -->
+            <ul lass="nav flex-column">
+              <div>
+              <li class="nav-item" (click)="activateClass(subModule)"
+                  *ngFor="let subModule of subModules"
+                  >
+                <a class="nav-link" [ngClass]="{'active': subModule.active}" routerLink='{subModule.route}'>
+                  <!-- <fa-icon [icon]="getIcon(module.icon)" size="lg" class="font-awesome"></fa-icon> -->
+                  {{ subModule.name }}</a>
+              </li>
+            </div>
+            <!-- </ul> -->
+            
+            <!-- Calling SignOut() Api from AuthService -->
+            <li class="nav-item">
+              <a class="nav-link" (click)="authService.SignOut()">
+                <i class="fas fa-sign-out-alt"></i>Log out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+</div>

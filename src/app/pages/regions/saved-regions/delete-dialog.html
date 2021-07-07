@@ -1,0 +1,8 @@
+<div mat-dialog-title>Confirm Delete</div>
+<div mat-dialog-content>
+  <p>Are you sure to delete {{data.name}}?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" >Ok</button>
+</div>

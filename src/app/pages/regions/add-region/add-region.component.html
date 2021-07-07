@@ -1,0 +1,108 @@
+<app-layout [spinner]=loader>
+    <mat-toolbar class="page-header" role="heading">
+        <h1>Add Region</h1>
+    </mat-toolbar>
+    <mat-card>
+        <mat-card-content>
+            <form class="form" [formGroup]="form" (ngSubmit)="addRegion()">
+                <div fxLayout="row">
+                    <div fxLayout="column" fxFlex="70">
+                        <div fxLayout="row">
+                            <div fxFlexOffset="8" fxFlex="85">
+                                <mat-form-field class="c46-width" appearance="outline">
+                                    <mat-label>Region</mat-label>
+                                    <input matInput placeholder="Enter Region" aria-label="Region"
+                                        [matAutocomplete]="auto1" formControlName="region">
+                                    <mat-autocomplete #auto1="matAutocomplete" [displayWith]="autoCompleteDiplay"
+                                        (optionSelected)="onRegionSelect($event)">
+                                        <mat-option *ngFor="let eachRegion of regionList" [value]="eachRegion">
+                                            <span>{{eachRegion.name}}</span>
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="f.region.errors && f.region.errors.required">
+                                        This field is required</mat-error>
+                                    <mat-error *ngIf="f.region.errors && f.region.errors.incorrect">
+                                        Please select an item from dropdown</mat-error>
+                                </mat-form-field>
+                                <!-- </div> -->
+                                <!-- </div>
+                        <div fxLayout="row"> -->
+                                <!-- <div fxFlexOffset="3" fxFlex="85"> -->
+                                <mat-form-field class="c46-width" appearance="outline">
+                                    <mat-label>City</mat-label>
+                                    <input matInput placeholder="Enter City" aria-label="City" [matAutocomplete]="auto2"
+                                        formControlName="city">
+                                    <mat-autocomplete #auto2="matAutocomplete" [displayWith]="autoCompleteDiplay">
+                                        <mat-option *ngFor="let eachCity of cityList" [value]="eachCity">
+                                            <span>{{eachCity.name}}</span>
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error *ngIf="f.city.errors && f.city.errors.required">
+                                        This field is required</mat-error>
+                                    <mat-error *ngIf="f.city.errors && f.city.errors.incorrect">
+                                        Please select an item from dropdown</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="8" fxFlex="85">
+                                <mat-form-field appearance="outline" class="c95-width">
+                                    <mat-label>Town</mat-label>
+                                    <input matInput type="text" placeholder="town" formControlName="town">
+                                    <mat-error *ngIf="f.town.errors && f.town.errors.required">
+                                        This field is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="8" fxFlex="85">
+                                <mat-form-field appearance="outline" class="c46-width">
+                                    <mat-label>Latitude</mat-label>
+                                    <input matInput type="text" placeholder="latitude" formControlName="latitude">
+                                    <mat-error *ngIf="f.town.errors && f.town.errors.required">
+                                        This field is required</mat-error>
+                                </mat-form-field>
+                                <!-- </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="8" fxFlex="85"> -->
+                                <mat-form-field appearance="outline" class="c46-width">
+                                    <mat-label>Longitude</mat-label>
+                                    <input matInput type="text" placeholder="longitude" formControlName="longitude">
+                                    <mat-error *ngIf="f.town.errors && f.town.errors.required">
+                                        This field is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="8" fxFlex="85">
+                                <mat-form-field class="c95-width" appearance="fill">
+                                    <mat-label>Postal Code</mat-label>
+                                    <mat-chip-list #chipList aria-label="postal code selection">
+                                        <mat-chip *ngFor="let postalCode of postalCodes" [selectable]="selectable"
+                                            [removable]="removable" (removed)="remove(postalCode)">
+                                            {{postalCode}}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                        </mat-chip>
+                                        <input placeholder="New Postal code..." [matChipInputFor]="chipList"
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                                    </mat-chip-list>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxLayout="row">
+
+                            <div class="c45-width">
+                                <button class="c20-width-submit-button" mat-raised-button color="primary"
+                                    type="submit">Add Region</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</app-layout>

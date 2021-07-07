@@ -1,0 +1,39 @@
+<app-layout [spinner]=loader>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Covid Data</h1>
+    <button mat-raised-button matTooltip="Add New User" class="c10-padding" matTooltipPosition="below" color="primary"
+      routerLink='/add-covid-data'>
+      <fa-icon [icon]="plus" class="font-awesome c10-width"></fa-icon> Add Covid Data
+    </button>
+  </mat-toolbar>
+  <mat-card>
+    <mat-card-content>
+      <table mat-table [dataSource]="allData" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="totalCases">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Total case</th>
+          <td mat-cell *matCellDef="let element">{{element.totalCases}}</td>
+        </ng-container>
+        <ng-container matColumnDef="totalTest">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Test</th>
+          <td mat-cell *matCellDef="let element">{{element.totalTest}}</td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Click to Delete" matTooltipPosition="left"
+              (click)="openDeleteDialog(element)" color="primary">
+              <fa-icon [icon]="trash" class="font-awesome c10-width"></fa-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableHeader"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableHeader"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</app-layout>

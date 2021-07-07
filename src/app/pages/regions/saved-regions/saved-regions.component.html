@@ -1,0 +1,51 @@
+<app-layout [spinner]=loader>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Region</h1>
+    <button mat-raised-button matTooltip="Add New Region" class="c10-padding" matTooltipPosition="below" color="primary"
+      routerLink='/add-region'>
+      <fa-icon [icon]="plus" class="font-awesome c10-width"></fa-icon> Add Region
+    </button>
+  </mat-toolbar>
+  <mat-card>
+    <mat-card-content>
+      <table mat-table [dataSource]="allData" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="region">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Region Name</th>
+          <td mat-cell *matCellDef="let element">{{element.regionName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>City Name</th>
+          <td mat-cell *matCellDef="let element">{{element.cityName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="town">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Town Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="latitude">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Latitude</th>
+          <td mat-cell *matCellDef="let element">{{element.latitude}}</td>
+        </ng-container>
+        <ng-container matColumnDef="longitude">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Longitude</th>
+          <td mat-cell *matCellDef="let element">{{element.longitude}}</td>
+        </ng-container>
+        <ng-container matColumnDef="postalCodes">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Postal Code</th>
+          <td mat-cell *matCellDef="let element">{{element.postalCodes}}</td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Click to Delete" matTooltipPosition="left"
+              (click)="openDeleteDialog(element)" color="primary">
+              <fa-icon [icon]="trash" class="font-awesome c10-width"></fa-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableHeader"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableHeader" [ngClass]="{'make-red': row.status==0 }"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</app-layout>

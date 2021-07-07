@@ -1,0 +1,20 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /(.*\.(gif|png|jpg|css|js)(|\.map))$
+  static_files: dist/crownpass/index.html
+  upload: dist/crownpass/index.html
+- url: /(.*)
+  static_dir: dist/crownpass
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - coverage
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

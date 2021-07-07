@@ -1,0 +1,31 @@
+<div class="auth-page">
+    <div class="auth-page__content-block">
+      <div class="auth-page__content-wrapper">
+        <mat-tab-group class="auth-page__group">
+          <mat-tab label="Login">
+            <h4 class="auth-page__group-title" *ngIf= time >Good {{time}}, User</h4>
+
+            <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+              <mat-form-field class="form__input" appearance="outline">
+                <input matInput placeholder="Username" type="email" formControlName="username">
+              </mat-form-field>
+              <mat-form-field class="form__input" appearance="outline">
+                <input matInput placeholder="Password" type="password" formControlName="password">
+              </mat-form-field>
+              <mat-checkbox class="example-margin" formControlName="stayLoggedIn">Stay logged in</mat-checkbox>
+              <div class="form-actions">
+                <button class="form-actions__login" mat-raised-button color="primary" [disabled]=disable type="submit">Login</button>
+              </div>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+  
+      </div>
+    </div>
+    <div class="auth-page__logo">
+      <div class="auth-page__logo-wrapper">
+        <h6 class="auth-page__logo-title">CrownPass</h6>
+      </div>
+    </div>
+  </div>
+  

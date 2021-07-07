@@ -1,0 +1,31 @@
+<app-layout>
+    <mat-toolbar class="page-header" role="heading">
+      <h1>Dashboard</h1>
+      <h3 *ngIf=localUserData.regionName>Region :{{localUserData.regionName}}</h3>
+    </mat-toolbar>
+    <mat-card>
+      <mat-card-content>
+        <h4>Covid Case Chart</h4>
+        <canvas baseChart height="80" 
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="'line'"
+        [plugins]="lineChartPlugins">
+      </canvas>
+      <h4>Test Positivity Rate Chart</h4>
+      <canvas baseChart height="80" 
+        [datasets]="lineChartTRPData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="'line'"
+        [plugins]="lineChartPlugins">
+      </canvas>
+  
+    </mat-card-content>
+</mat-card>
+</app-layout>
