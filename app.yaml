@@ -2,12 +2,13 @@ runtime: python27
 api_version: 1
 threadsafe: true
 handlers:
-- url: /(.*\.(gif|png|jpg|css|js)(|\.map))$
-  static_files: dist/crownpass/index.html
-  upload: dist/crownpass/index.html
-- url: /(.*)
-  static_dir: dist/crownpass
+  - url: /(.*\.(gif|png|jpg|css|js)(|\.map))$
+    static_files: dist/crownpass/\1
+    upload: dist/crownpass/(.*)(|\.map)
 
+  - url: /(.*)
+    static_files: dist/crownpass/index.html
+    upload: dist/crownpass/index.html
 skip_files:
   - e2e/
   - node_modules/
